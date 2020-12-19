@@ -5,6 +5,7 @@ import datetime
 import reports
 import emails
 
+
 if __name__ == '__main__':
     DESC_DIR = os.path.join(os.path.expanduser("~"), 'supplier-data', 'descriptions')
     attachment = "processed.pdf"
@@ -15,12 +16,15 @@ if __name__ == '__main__':
     for file in os.listdir(DESC_DIR):
         with open(os.path.join(DESC_DIR, file)) as f:
             name, weight, _ = f.readlines()
-            paragraphs.append(f"name: {name}weight: {weight}")
+            paragraphs.append(f"name: {name}")
+            paragraphs.append(f"weight: {weight}")
+            paragraphs.append("\n")
 
-    reports.generate_report(attachment, title, "\n".join(paragraphs))
-    emails.generate_email(
+    reports.generate_report(attachment, title, paragraphs)
+    email = emails.generate_email(
         sender="automation@example.com",
         recipient="username@example.com",
         subject="Upload Completed - Online Fruit Store",
-        body="All fruits are uploaded to our website successfully. A detailed list is attach to this email",
+        body="All fruits are uploaded to our website successfully. A detailed list is attach to this email.",
         attachment=attachment)
+    emails.send_email(email)

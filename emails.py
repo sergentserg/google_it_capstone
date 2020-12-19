@@ -5,7 +5,7 @@ import mimetypes
 from email.message import EmailMessage
 
 
-def generate_email(sender, recipient, subject, body, attachment):
+def generate_email(sender, recipient, subject, body, attachment=None):
     message = EmailMessage()
     message['From'] = sender
     message['To'] = recipient

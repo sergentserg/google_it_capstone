@@ -12,7 +12,7 @@ def process_images(img_dir):
         abspath = os.path.join(img_dir, infile)
         ofile = os.path.join(img_dir, name + '.JPEG')
         try:
-            img = Image.open(os.path.join(img_dir, abspath))
+            img = Image.open(abspath)
             img.convert('RGB').resize(RESOLUTION).save(ofile)
         except FileNotFoundError as e:
             print(f"The file {infile} could not be opened.")

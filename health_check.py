@@ -34,8 +34,8 @@ def check_localhost():
 
 if __name__ == '__main__':
     checks = [
-        (check_disk_usage, "Error - CPU usage is over 80%"),
-        (check_cpu_usage, "Error - Available disk space is less than 20%"),
+        (check_cpu_usage, "Error - CPU usage is over 80%"),
+        (check_disk_usage, "Error - Available disk space is less than 20%"),
         (check_available_memory, "Error - Available memory is less than 500MB"),
         (check_localhost, "Error - localhost cannot be resolved to 127.0.0.1")
     ]

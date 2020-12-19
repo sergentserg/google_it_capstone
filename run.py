@@ -5,7 +5,8 @@ import requests
 
 def to_json(fp):
     with open(fp, 'r') as f:
-        name, weight, description = [field.strip() for field in f.readlines()]
+        name, weight, description = [field.strip() for field in f.readlines()[:3]]
+    image_name, _ = os.path.splitext(os.path.basename(fp))
     return {
         "name": name,
         "weight": int(weight.split()[0]),
